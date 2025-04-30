@@ -1,69 +1,88 @@
 #include <stdio.h>
+#include <string.h>
+
+int isPalindrome(char *start, char *end) {
+    while (start < end) {
+        if (*start != *end) {
+            return 0; 
+        }
+        start++;
+        end--;
+    }
+    return 1;
+}
 
 int main() {
-    int num, originalNum, reversedNum = 0, remainder;
-    printf("Enter an integer: ");
-    scanf("%d", &num);
-    originalNum = num;
-    while (num != 0) {
-        remainder = num % 10;
-        reversedNum = reversedNum * 10 + remainder;
-        num /= 10;
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    char *start = str;               
+    char *end = str + strlen(str) - 1; 
+
+    if (isPalindrome(start, end)) {
+        printf("The string \"%s\" is a palindrome.\n", str);
+    } else {
+        printf("The string \"%s\" is not a palindrome.\n", str);
     }
-    if (originalNum == reversedNum)
-        printf("%d is a palindrome.\n", originalNum);
-    else
-        printf("%d is not a palindrome.\n", originalNum);
 
     return 0;
 }
 
-//CODE FOR FINDING A SPY NUMBER;
 #include <stdio.h>
-int main() {
-    int num, digit, sum = 0, product = 1;
-    printf("Enter an integer: ");
-    scanf("%d", &num);
-    int temp = num;
-    while (temp > 0) {
-        digit = temp % 10;
-        sum += digit;
-        product *= digit;
-        temp /= 10;
+
+int isSpyNumber(int *num) {
+    int sum = 0, product = 1;
+    int n = *num;
+
+    while (n > 0) {
+        int digit = n % 10; 
+        sum += digit;       
+        product *= digit; 
+        n /= 10;          
     }
-    if (sum == product)
-        printf("%d is a Spy Number.\n", num);
-    else
-        printf("%d is not a Spy Number.\n", num);
+    return sum == product;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (isSpyNumber(&num)) {
+        printf("The number %d is a spy number.\n", num);
+    } else {
+        printf("The number %d is not a spy number.\n", num);
+    }
 
     return 0;
 }
 
-//CODE FOR FINDING AN ARMSTRONG NUMBER:
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
+
+int isPalindrome(char *start, char *end) {
+    while (start < end) {
+        if (*start != *end) {
+            return 0;
+        }
+        start++;
+        end--;
+    }
+    return 1;
+}
 int main() {
-    int num, originalNum, remainder, n = 0;
-    float result = 0.0;
-    printf("Enter an integer: ");
-    scanf("%d", &num);
-    originalNum = num;
-    int temp = num;
-    while (temp != 0) {
-        temp /= 10;
-        n++;
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    char *start = str;               
+    char *end = str + strlen(str) - 1; 
+
+    if (isPalindrome(start, end)) {
+        printf("The string \"%s\" is a palindrome.\n", str);
+    } else {
+        printf("The string \"%s\" is not a palindrome.\n", str);
     }
-    temp = num;
-    while (temp != 0) {
-        remainder = temp % 10;
-        result += pow(remainder, n);
-        temp /= 10;
-    }
-    if ((int)result == originalNum)
-        printf("%d is an Armstrong number.\n", originalNum);
-    else
-        printf("%d is not an Armstrong number.\n", originalNum);
 
     return 0;
 }
-
